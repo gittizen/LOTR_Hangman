@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pán prstenů · Hádej postavu</title>
+    <meta
+      name="description"
+      content="Hangman ze Středozemě. Hádej postavy z Pána prstenů, než Kraj pohltí Mordor."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="world" aria-hidden="true">
+      <div class="world-layer world-shire"></div>
+      <div class="world-layer world-mordor"></div>
+      <div class="world-vignette"></div>
+    </div>
+
+    <main class="app">
+      <header class="header">
+        <p class="eyebrow">Středozemě</p>
+        <h1>Hádej postavu</h1>
+        <p class="subtitle">
+          Hangman z Pána prstenů. Každá chyba posune Kraj blíž k Mordoru.
+        </p>
+      </header>
+
+      <section class="journey" aria-label="Cesta z Kraje do Mordoru">
+        <span class="place shire-label">Hobitín</span>
+        <div class="path">
+          <div class="path-fill" id="path-fill"></div>
+        </div>
+        <span class="place mordor-label">Mordor</span>
+      </section>
+
+      <section class="hud">
+        <div class="stat">
+          <span class="stat-label">Životy</span>
+          <span class="stat-value" id="lives-count">10</span>
+        </div>
+        <div class="rings" id="rings" aria-hidden="true"></div>
+        <div class="stat">
+          <span class="stat-label">Znaků</span>
+          <span class="stat-value" id="letter-count">0</span>
+        </div>
+      </section>
+
+      <section class="board">
+        <p class="hint" id="hint"></p>
+        <div class="word" id="word" role="status" aria-live="polite"></div>
+        <p class="used-label">Použitá písmena</p>
+        <div class="used" id="used"></div>
+      </section>
+
+      <form class="guess-form" id="guess-form" autocomplete="off">
+        <label for="letter-input">Zadej písmeno</label>
+        <div class="input-row">
+          <input
+            id="letter-input"
+            name="letter"
+            maxlength="1"
+            inputmode="text"
+            aria-label="Písmeno k hádání"
+            required
+          />
+          <button type="submit" id="guess-btn">Hádat</button>
+        </div>
+        <p class="message" id="message" role="status"></p>
+      </form>
+
+      <div class="keyboard" id="keyboard"></div>
+    </main>
+
+    <div class="overlay hidden" id="overlay">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <p class="eyebrow" id="modal-eyebrow"></p>
+        <h2 id="modal-title"></h2>
+        <p id="modal-text"></p>
+        <button type="button" id="new-game-btn">Nová hra</button>
+      </div>
+    </div>
+    
+    <script src="game.js"></script>
+  </body>
+</html>
